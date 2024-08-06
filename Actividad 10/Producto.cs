@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Actividad_10
 {
-    internal class Producto
+    public class Producto
     {
 
         public string Marca { get; set; }
