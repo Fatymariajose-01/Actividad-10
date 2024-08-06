@@ -12,6 +12,7 @@ class Programa
         {
             try
             {
+                Console.Clear();
                 Console.WriteLine("1. Registrar Nuevo Producto");
                 Console.WriteLine("2. Mostrar Todos los Productos");
                 Console.WriteLine("3. Buscar Producto");
@@ -24,18 +25,22 @@ class Programa
                 {
                     case 1:
                         RegistrarProducto();
+                        Console.ReadKey();
                         break;
                     case 2:
-                        //MostrarProductos();
+                        MostrarProductos();
+                        Console.ReadKey();
                         break;
                     case 3:
-                        //BuscarProducto();
+                        BuscarProducto();
+                        Console.ReadKey();
                         break;
                     case 4:
                         ejecutando = false;
                         break;
                     default:
                         Console.WriteLine("Opción inválida, por favor intenta de nuevo.");
+                        Console.ReadKey();
                         break;
                 }
             }
@@ -91,5 +96,35 @@ public static void RegistrarProducto()
 
     Console.WriteLine("Producto registrado con éxito.");
 }
+    private static void MostrarProductos()
+    {
+        if (productos.Count == 0)
+        {
+            Console.WriteLine("No hay productos registrados.");
+            return;
+        }
 
-}//
+        foreach (var producto in productos)
+        {
+            Console.WriteLine(producto.MostrarInformacion());
+        }
+    }
+
+    private static void BuscarProducto()
+    {
+        Console.Write("Ingresa el Número de Serie para Buscar: ");
+        string numeroDeSerie = Console.ReadLine();
+
+        var producto = productos.Find(p => p.NumeroDeSerie == numeroDeSerie);
+        if (producto != null)
+        {
+            Console.WriteLine(producto.MostrarInformacion());
+        }
+        else
+        {
+            Console.WriteLine("Producto no encontrado.");
+        }
+    }
+
+
+}
