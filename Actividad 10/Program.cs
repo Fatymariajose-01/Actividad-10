@@ -49,4 +49,47 @@ class Programa
             }
         }
     }
+
+public static void RegistrarProducto()
+{
+    Console.WriteLine("Selecciona el Tipo de Producto: ");
+    Console.WriteLine("1. Teléfono");
+    Console.WriteLine("2. Ordenador");
+    Console.WriteLine("3. Tablet");
+    int tipo = int.Parse(Console.ReadLine());
+
+    Console.Write("Ingresa la Marca: ");
+    string marca = Console.ReadLine();
+
+    Console.Write("Ingresa el Número de Serie: ");
+    string numeroDeSerie = Console.ReadLine();
+
+    Console.Write("Ingresa el Modelo: ");
+    string modelo = Console.ReadLine();
+
+    switch (tipo)
+    {
+        case 1:
+            Console.Write("Ingresa la Cantidad de SIMs: ");
+            int cantidadDeSim = int.Parse(Console.ReadLine());
+            productos.Add(new Teléfono(marca, numeroDeSerie, modelo, cantidadDeSim));
+            break;
+        case 2:
+            Console.Write("Ingresa el Tamaño de RAM (GB): ");
+            int tamanoRam = int.Parse(Console.ReadLine());
+            productos.Add(new Ordenador(marca, numeroDeSerie, modelo, tamanoRam));
+            break;
+        case 3:
+            Console.Write("¿Tiene Celular? (true/false): ");
+            bool tieneCelular = bool.Parse(Console.ReadLine());
+            productos.Add(new Tablet(marca, numeroDeSerie, modelo, tieneCelular));
+            break;
+        default:
+            Console.WriteLine("Tipo de producto inválido.");
+            break;
+    }
+
+    Console.WriteLine("Producto registrado con éxito.");
 }
+
+}//
