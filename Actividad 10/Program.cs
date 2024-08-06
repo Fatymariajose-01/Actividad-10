@@ -1,14 +1,52 @@
-﻿Console.WriteLine("Menú");
-Console.WriteLine("1. Agregar nuevos productos");
-Console.WriteLine("2. Listar todos los producatos registrados");
-Console.WriteLine("3. Buscar producto por nombre");
-Console.WriteLine("4. Salir del programa");
-Console.WriteLine("Elija una opción");
-int opcion = Convert.ToInt32(Console.ReadLine());
+﻿using Actividad_10;
 
-switch (opcion)
+class Programa
 {
-    case 1:
+    private static List<Producto> productos = new List<Producto>();
 
-        break;
+    static void Main()
+    {
+        bool ejecutando = true;
+
+        while (ejecutando)
+        {
+            try
+            {
+                Console.WriteLine("1. Registrar Nuevo Producto");
+                Console.WriteLine("2. Mostrar Todos los Productos");
+                Console.WriteLine("3. Buscar Producto");
+                Console.WriteLine("4. Salir");
+                Console.Write("Elige una opción: ");
+
+                int opcion = int.Parse(Console.ReadLine());
+
+                switch (opcion)
+                {
+                    case 1:
+                        //RegistrarProducto();
+                        break;
+                    case 2:
+                        //MostrarProductos();
+                        break;
+                    case 3:
+                        //BuscarProducto();
+                        break;
+                    case 4:
+                        ejecutando = false;
+                        break;
+                    default:
+                        Console.WriteLine("Opción inválida, por favor intenta de nuevo.");
+                        break;
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Formato de entrada inválido. Por favor, ingresa un número.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ocurrió un error: {ex.Message}");
+            }
+        }
+    }
 }
