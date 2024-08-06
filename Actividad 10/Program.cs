@@ -23,7 +23,7 @@ class Programa
                 switch (opcion)
                 {
                     case 1:
-                        //RegistrarProducto();
+                        RegistrarProducto();
                         break;
                     case 2:
                         //MostrarProductos();
